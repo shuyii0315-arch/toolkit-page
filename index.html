@@ -55,12 +55,12 @@ pre.tall{max-height:280px;overflow:auto;padding-right:6px;color:#55534F}
 <div class="demo"><video src="toolkit-launch.mp4" poster="toolkit-poster.jpg" autoplay muted loop playsinline></video></div>
 <section class="info">
  <div class="ttl"><h1>toolkit</h1><div class="acts"><button id="share" title="Copy link"><svg viewBox="0 0 24 24"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4M12 2v13"/></svg><span>Share</span></button><a class="gh" href="https://toolkit-xi-eight.vercel.app/" target="_blank" rel="noopener">Visit site ↗</a></div></div>
- <p class="desc">My design toolkit, as a website: the inspiration I collect, the skills I make and use, and the designers' sites I keep going back to, each one credited and linked to its source. It isn't only a page to browse. A Chrome extension lets me right-click any image on the web and it goes live on the site in about a minute, and an MCP server lets AI tools like Claude search it and use what's inside.</p>
+ <p class="desc">A website for the design things I collect: inspiration, AI skills, and designers' sites. Every item links back to where it came from. I can add to it from any website with a Chrome extension, and AI tools can search it through MCP.</p>
  <div class="uses"><span>Uses</span><i>Chrome extension</i><i>MCP server</i><i>GitHub Actions</i><i>Astro</i><i>Vercel</i></div>
  <div class="hl">
-  <div><span class="k">01 · Extension</span><h3>Collect from anywhere</h3><p>Right-click an image on Pinterest, X or any site. It's live on the site in about a minute, with its author and original post found for me, and sorted into a category overnight. Undo is one click, and the same image never gets in twice.</p></div>
-  <div><span class="k">02 · MCP</span><h3>Searchable by AI</h3><p>The site runs its own MCP server. Ask Claude for a reference and it comes back with the image, a short note and a link; ask for a skill and it gets the full SKILL.md, ready to use.</p></div>
-  <div><span class="k">03 · Details</span><h3>Made to be looked at</h3><p>An image-first feed you scroll like Best Designs on X, liquid-glass buttons that read the image behind them, a logo that mixes typefaces when you hover it, and every page in English and Chinese.</p></div>
+  <div><span class="k">01 · Chrome extension</span><h3>Save from any site</h3><p>See an image you like on Pinterest or X? Right-click it and choose "Add to toolkit". About a minute later it's on the site, with a link to the original post.</p></div>
+  <div><span class="k">02 · MCP server</span><h3>Search it from AI tools</h3><p>Connect toolkit to Claude or another AI tool. Ask for "a glass UI reference" and you get the matching images and links. Ask for a skill and you can use it right away.</p></div>
+  <div><span class="k">03 · Browsing</span><h3>Scroll, open, go to the source</h3><p>Inspiration reads like a feed. Click a piece to see it large, then jump to the original post. Every page works in English and Chinese.</p></div>
  </div>
 </section>
 <script>const $=s=>document.querySelector(s);$('#share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('#share span').textContent='Copied'}catch(e){prompt('Copy link',location.href)}setTimeout(()=>$('#share span').textContent='Share',1500)};</script>
