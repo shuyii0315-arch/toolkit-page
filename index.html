@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>toolkit</title>
+<meta name="description" content="My design toolkit, as a website — with a Chrome extension to collect from anywhere and an MCP server so AI tools can search it.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1A1A;--bg:#FFFFFF}
+*{box-sizing:border-box;margin:0;padding:0}
+html{height:100%}body{min-height:100%}
+body{background:#fff;font-family:Geist,system-ui,sans-serif;color:#1A1A1A;-webkit-font-smoothing:antialiased;max-width:1040px;margin:0 auto;padding:0 28px 140px}
+.pg-top{display:flex;align-items:center;gap:8px;height:64px;font-size:13px;color:#8E8C87}.pg-top a{color:#1A1A1A;text-decoration:none}.pg-top b{font-weight:500}.pg-top i{font-style:normal;color:#C9C7C2}
+.demo{--bg:#F7F7F7;position:relative;height:min(640px,calc(100vh - 150px));min-height:460px;background:#F7F7F7;border-radius:22px;overflow:hidden;box-shadow:inset 0 0 0 .5px rgba(26,26,26,.06)}
+#stage{position:absolute;inset:0}
+.g{position:absolute;white-space:pre;font:600 1em/1.15 "Geist Mono","SF Mono",ui-monospace,Menlo,monospace;color:var(--ink);pointer-events:none}
+.dctl{position:absolute;top:16px;z-index:20;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(255,255,255,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 3px rgba(0,0,0,.05),inset 0 0 0 .5px rgba(26,26,26,.08)}.dctl.l{left:16px}.dctl.r{right:16px}
+.dctl button,.acts button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:999px;font:500 12.5px Geist,system-ui,sans-serif;color:#3A3936;transition:background .2s,color .2s}
+.dctl.l button{color:#8E8C87}.dctl.l button.on{background:#fff;color:#1A1A1A;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.dctl.r button{padding:0 8px}.dctl button:hover,.acts button:hover{background:rgba(26,26,26,.06)}.dctl.l button.on:hover{background:#fff}
+.dctl svg,.acts svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.info{padding:22px 4px 0}
+.ttl{display:flex;align-items:center;justify-content:space-between}.ttl h1{font:500 19px Geist,system-ui,sans-serif;letter-spacing:-.01em;margin:0}
+.acts{display:flex;gap:6px;align-items:center}.acts button{height:32px;padding:0 13px;box-shadow:inset 0 0 0 .5px rgba(26,26,26,.14)}
+.acts .gh{height:32px;display:inline-flex;align-items:center;gap:6px;padding:0 13px;border-radius:999px;font:500 12.5px Geist,system-ui,sans-serif;color:#3A3936;text-decoration:none;box-shadow:inset 0 0 0 .5px rgba(26,26,26,.14)}.acts .gh:hover{background:rgba(26,26,26,.05)}
+.desc{max-width:600px;font-size:14px;line-height:1.6;color:#55534F;margin:12px 0 14px}
+.uses{display:flex;align-items:center;gap:6px;font-size:12px;color:#8E8C87}.uses i{font-style:normal;padding:3px 9px;border-radius:999px;background:#F7F7F7;color:#55534F}
+.spec{margin-top:36px;padding-top:24px;border-top:.5px solid rgba(26,26,26,.1)}
+.tabs{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:#F7F7F7}.tabs button{all:unset;cursor:pointer;height:28px;padding:0 13px;border-radius:999px;font:500 12.5px Geist,system-ui,sans-serif;color:#8E8C87;transition:background .2s,color .2s}.tabs button.on{background:#fff;color:#1A1A1A;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.sp{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:20px;align-items:start}.sp p{font-size:15px;line-height:1.6;max-width:420px;padding-top:16px;color:#1A1A1A;margin:0}
+.sp .rows{display:grid;grid-template-columns:84px 1fr;gap:12px 16px;padding:20px 22px;border-radius:14px;background:#F7F7F7;font:400 12.5px/1.4 'Geist Mono',ui-monospace,monospace;color:#55534F}
+.sp .rows b{font-weight:400;color:#1A1A1A}.sp .rows u{text-decoration:none;color:#E2723B}
+body.m-full{max-width:none;padding:0;overflow:hidden;height:100%}body.m-full .pg-top,body.m-full .info{display:none}
+body.m-full .demo{position:fixed;inset:0;height:auto;min-height:0;border-radius:0;box-shadow:none}
+.spec h2{font:500 15px Geist,system-ui,sans-serif;margin:0 0 8px}.lead{max-width:640px;font-size:14px;line-height:1.6;color:#55534F;margin:0 0 18px}
+.row{border-radius:14px;background:#F7F7F7;margin-bottom:10px;overflow:hidden}
+.rh{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 8px}
+.tg{all:unset;cursor:pointer;flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:4px 6px}.tg svg{width:15px;height:15px;flex:none;fill:none;stroke:#8E8C87;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.tg b{font:500 13.5px Geist,system-ui,sans-serif;flex:none}.tg span{font-size:12.5px;color:#8E8C87;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .body{display:none;padding:2px 22px 20px 38px}.row.open .body{display:block}.row.open .tg svg{transform:rotate(90deg)}
+pre.body{max-height:360px;overflow:auto}
+.note{font-size:13px;color:#55534F;margin:0 0 12px;line-height:1.5}.links{display:flex;gap:8px;margin-top:14px}
+.blk{border-radius:14px;background:#F7F7F7;padding:18px 20px}
+.bh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:12px}.bh b{display:block;font:500 13.5px Geist,system-ui,sans-serif}.bh span{display:block;font-size:12.5px;color:#8E8C87;margin-top:3px}
+.cp{all:unset;cursor:pointer;flex:none;height:28px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;background:#fff;font:500 12px Geist,system-ui,sans-serif;color:#3A3936;box-shadow:0 1px 3px rgba(0,0,0,.08);text-decoration:none}.cp:hover{background:#fafafa}
+pre{margin:0;font:400 12.5px/1.65 'Geist Mono',ui-monospace,monospace;color:#3A3936;white-space:pre-wrap;word-break:break-word}
+pre.tall{max-height:280px;overflow:auto;padding-right:6px;color:#55534F}
+.steps{list-style:none;display:grid;gap:10px;font-size:14px;color:#3A3936}.steps b{display:inline-block;width:110px;font-weight:500;color:#1A1A1A}.steps code{font:400 12.5px 'Geist Mono',monospace;background:#fff;padding:2px 6px;border-radius:6px}
+@media (max-width:760px){.steps b{display:block;width:auto}.sp{grid-template-columns:1fr;gap:20px}body{padding:0 16px 96px}.pg-top{height:52px}.demo{height:min(520px,calc(100svh - 120px));min-height:380px;border-radius:18px}.dctl{top:12px}.dctl.l{left:12px;max-width:calc(100% - 120px);overflow-x:auto;scrollbar-width:none}.dctl.r{right:12px}.dctl.l button{padding:0 9px;flex:none}.dctl.r span{display:none}.uses{flex-wrap:wrap}.tabs{display:flex;overflow-x:auto;max-width:100%;scrollbar-width:none}.tabs button{flex:none;padding:0 10px;font-size:12px}.sp p{padding-top:0;max-width:none}.sp .rows{grid-template-columns:72px 1fr;padding:16px 18px}}
+
+.demo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hl{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px;padding-top:24px;border-top:.5px solid rgba(26,26,26,.1)}
+.hl h3{font:500 14px Geist,system-ui,sans-serif;margin:0 0 8px;color:#1A1A1A}.hl p{font-size:13.5px;line-height:1.6;color:#55534F;margin:0}
+.hl .k{font:400 11.5px 'Geist Mono',ui-monospace,monospace;color:#8E8C87;margin-bottom:10px;display:block}
+@media (max-width:760px){.hl{grid-template-columns:1fr;gap:22px}}
+</style></head><body>
+<header class="pg-top"><a class="crumb" href="https://yuanshuyi.com/" target="_blank"><b>Shuyi Yuan</b></a><i>/</i><span>toolkit</span></header>
+<div class="demo"><video src="toolkit-launch.mp4" poster="toolkit-poster.jpg" autoplay muted loop playsinline></video></div>
+<section class="info">
+ <div class="ttl"><h1>toolkit</h1><div class="acts"><button id="share" title="Copy link"><svg viewBox="0 0 24 24"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4M12 2v13"/></svg><span>Share</span></button><a class="gh" href="https://toolkit-xi-eight.vercel.app/" target="_blank" rel="noopener">Visit site ↗</a></div></div>
+ <p class="desc">My design toolkit, as a website: the inspiration I collect, the skills I make and use, and the designers' sites I keep going back to, each one credited and linked to its source. It isn't only a page to browse. A Chrome extension lets me right-click any image on the web and it goes live on the site in about a minute, and an MCP server lets AI tools like Claude search it and use what's inside.</p>
+ <div class="uses"><span>Uses</span><i>Chrome extension</i><i>MCP server</i><i>GitHub Actions</i><i>Astro</i><i>Vercel</i></div>
+ <div class="hl">
+  <div><span class="k">01 · Extension</span><h3>Collect from anywhere</h3><p>Right-click an image on Pinterest, X or any site. It's live on the site in about a minute, with its author and original post found for me, and sorted into a category overnight. Undo is one click, and the same image never gets in twice.</p></div>
+  <div><span class="k">02 · MCP</span><h3>Searchable by AI</h3><p>The site runs its own MCP server. Ask Claude for a reference and it comes back with the image, a short note and a link; ask for a skill and it gets the full SKILL.md, ready to use.</p></div>
+  <div><span class="k">03 · Details</span><h3>Made to be looked at</h3><p>An image-first feed you scroll like Best Designs on X, liquid-glass buttons that read the image behind them, a logo that mixes typefaces when you hover it, and every page in English and Chinese.</p></div>
+ </div>
+</section>
+<script>const $=s=>document.querySelector(s);$('#share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('#share span').textContent='Copied'}catch(e){prompt('Copy link',location.href)}setTimeout(()=>$('#share span').textContent='Share',1500)};</script>
+</body></html>
